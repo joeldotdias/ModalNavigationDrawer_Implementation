@@ -11,12 +11,14 @@ import androidx.compose.ui.graphics.vector.ImageVector
 sealed class Screens(
     val title: String,
     val route: String,
-    val icon: ImageVector
+    val icon: ImageVector,
+    val badgeCount: Int? = null
 ) {
     object Inbox: Screens(
-        title = "All Messages",
+        title = "Inbox",
         route = "inbox",
-        icon = Icons.Default.Email
+        icon = Icons.Default.Email,
+        badgeCount = 31
     )
 
     object Sent: Screens(
@@ -28,18 +30,19 @@ sealed class Screens(
     object Starred: Screens(
         title = "Starred Messages",
         route = "starred",
-        icon = Icons.Default.Star
-    )
-
-    object Bin: Screens(
-        title = "Deleted Messages",
-        route = "bin",
-        icon = Icons.Default.Delete
+        icon = Icons.Default.Star,
+        badgeCount = 15
     )
 
     object Spam: Screens(
         title = "Spam",
         route = "spam",
         icon = Icons.Default.Warning
+    )
+
+    object Bin: Screens(
+        title = "Deleted Messages",
+        route = "bin",
+        icon = Icons.Default.Delete
     )
 }
